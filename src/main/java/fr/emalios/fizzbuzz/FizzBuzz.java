@@ -6,18 +6,20 @@ public class FizzBuzz {
 
     private final Predicate<Integer> isFizz = integer -> (integer % 3 == 0 || integer.toString().contains("3"));
     private final Predicate<Integer> isBuzz = integer -> (integer % 5 == 0 || integer.toString().contains("5"));
-    private final Predicate<Integer> isFizzBuzz = integer -> (this.isFizz.test(integer) && this.isBuzz.test(integer));
 
     public String fizzBuzz(int number) {
-        if(this.isFizzBuzz.test(number)) {
-            return "FizzBuzz";
-        }
+        String result = "";
         if(this.isFizz.test(number)) {
-            return "Fizz";
+            result += "Fizz";
         }
         if(this.isBuzz.test(number)) {
-            return "Buzz";
+            result += "Buzz";
         }
+        
+        if (!result.isEmpty()) {
+            return result;
+        }
+
         return String.valueOf(number);
     }
 
